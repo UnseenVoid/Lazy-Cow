@@ -1,0 +1,17 @@
+{
+    "type": "table",
+    "name": "Cow",
+    "database": "Lazy",
+    "data": [
+        {
+            "tag": "1",
+            "patterns": "Html templete\r\nsimple html site",
+            "responses": "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<title>Page Title<\/title>\r\n<\/head>\r\n<body>\r\n\r\n<h1>This is a Heading<\/h1>\r\n<p>This is a paragraph.<\/p>\r\n\r\n<\/body>\r\n<\/html> "
+        },
+        {
+            "tag": "2",
+            "patterns": "html background color",
+            "responses": "<body style=\"background-color:powderblue;\">\r\n\r\n<h1>This is a heading<\/h1>\r\n<p>This is a paragraph.<\/p>\r\n\r\n<\/body> "
+        }
+    ]
+}
