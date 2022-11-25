@@ -17,20 +17,24 @@
         function conn() {
             let input_x = document.getElementById("inpx").value
             let input_y = document.getElementById("inpy").value
-
-            let xcon = JSON.stringify(input_x)
             let ycon = JSON.stringify(input_y)
             var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             var tagLength = 10;
             var tag = ""
-
             for (var i = 0; i <= tagLength; i++) {
                 var randomNumber = Math.floor(Math.random() * chars.length);
                 tag += chars.substring(randomNumber, randomNumber + 1);
             }
+            let txt = "";
+            let s_v = input_x.split(",");
+            s_v.forEach(myFunction);
+            function myFunction(item) {
+                txt += "\""+item+"\"";
+            }
+            //txt=txt.replaceAll("\"\"","\",\"")
             document.getElementById("inpx").value="";
             document.getElementById("inpy").value="";
-            document.getElementById("final_xy").value = "{"+"\"tag\":"+"\""+tag+"\","+"\"patterns\":"+"["+xcon+"],"+"\"responses\":"+"["+ycon+"]},"
+            document.getElementById("final_xy").value = "{"+"\"tag\":"+"\""+tag+"\","+"\"patterns\":"+"["+txt.replaceAll("\"\"","\",\"")+"],"+"\"responses\":"+"["+ycon+"]},"
             }
     </script>
 </body>

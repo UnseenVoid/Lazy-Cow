@@ -5,9 +5,11 @@ import numpy as np
 import nltk
 from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import load_model
+import requests
 
 lemmatizer = WordNetLemmatizer()
-intents = json.loads(open('Cow.json').read())
+r=requests.get("https://pastebin.com/raw/Bs02CRnU")
+intents = json.loads(r.text)
 words = pickle.load(open('words.pkl', 'rb'))
 classes = pickle.load(open('classes.pkl', 'rb'))
 model = load_model('cow_model.h5')
@@ -59,15 +61,15 @@ def get_response(intents_list, intents_json):
 print("|=============== Lazy Cow ================|")
 while True:
     message = input("$ask: ")
-    if message == "bye" or message == "Goodbye":
+    if message == "bye":
         ints = predict_class(message)
         res = get_response(ints, intents)
-        print("Cow: Will this help:>\n", res ,
-              '\n<===================================>')
+        print("$Cow: Let me think!\nWill this help:\n", res,
+              "\n<===================================>\n")
         print("|===================== See Ya! =====================|")
         exit()
     else:
         ints = predict_class(message)
         res = get_response(ints, intents)
-        print("Cow: Will this help:>\n", res,
-              "\n<===================================>")
+        print("$Cow: Let me think!\nWill this help:\n", res,
+              "\n<===================================>\n")

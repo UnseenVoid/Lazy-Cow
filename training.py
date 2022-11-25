@@ -13,7 +13,7 @@ from tensorflow.keras.optimizers import SGD
 
 lemmatizer = WordNetLemmatizer()
 
-r=requests.get(url="https://pastebin.com/raw/Bs02CRnU")
+r=requests.get("https://pastebin.com/raw/Bs02CRnU")
 intents = json.loads(r.text)
 
 words = []
