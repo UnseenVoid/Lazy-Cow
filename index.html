@@ -1,0 +1,38 @@
+<html>
+<title>Threads</title>
+
+<body style="margin-left: 50px;margin-top: 20px;">
+    <p>Enter Parttern:</p>
+    <textarea name="Parttern" id="inpx" cols="50" rows="5"></textarea>
+    <br>
+    <p>Enter Response:</p>
+    <textarea name="Response" id="inpy" cols="50" rows="5"></textarea>
+    <br>
+    <br>
+    <button id="con" onclick="conn()" style="width: 100px;margin-left: 130px;height: 50px;">Create</button>
+    <br>
+    <p>JSON:</p>
+    <textarea name="Pattern_f" id="final_xy" cols="100" rows="10"></textarea>
+    <script>
+        function conn() {
+            let input_x = document.getElementById("inpx").value
+            let input_y = document.getElementById("inpy").value
+
+            let xcon = JSON.stringify(input_x)
+            let ycon = JSON.stringify(input_y)
+            var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var tagLength = 10;
+            var tag = ""
+
+            for (var i = 0; i <= tagLength; i++) {
+                var randomNumber = Math.floor(Math.random() * chars.length);
+                tag += chars.substring(randomNumber, randomNumber + 1);
+            }
+            document.getElementById("inpx").value="";
+            document.getElementById("inpy").value="";
+            document.getElementById("final_xy").value = "{"+"\"tag\":"+"\""+tag+"\","+"\"patterns\":"+"["+xcon+"],"+"\"responses\":"+"["+ycon+"]},"
+            }
+    </script>
+</body>
+
+</html>

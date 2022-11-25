@@ -41,12 +41,17 @@ def predict_class(sentence):
     return return_list
 
 
+def listToString(s):
+    str1 = " "
+    return (str1.join(s))
+
+
 def get_response(intents_list, intents_json):
     tag = intents_list[0]['intent']
-    list_of_intents = intents_json['data']
+    list_of_intents = intents_json['intents']
     for i in list_of_intents:
         if i['tag'] == tag:
-            result = i['responses']
+            result = listToString(i['responses'])
             break
     return result
 
@@ -57,7 +62,7 @@ while True:
     if message == "bye" or message == "Goodbye":
         ints = predict_class(message)
         res = get_response(ints, intents)
-        print("Cow: Will this help:>\n\n", res,
+        print("Cow: Will this help:>\n", res ,
               '\n<===================================>')
         print("|===================== See Ya! =====================|")
         exit()
